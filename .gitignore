@@ -2,3 +2,7 @@ node_modules
 dist
 .DS_Store
 *.log
+
+# Workout program data — kept locally for dev, not committed
+public/program.yaml
+k8s/configmap.yaml
