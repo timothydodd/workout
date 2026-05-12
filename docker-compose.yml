@@ -1,0 +1,25 @@
+services:
+  # Production build served by nginx
+  app:
+    build: .
+    image: workout-builder:latest
+    container_name: workout-builder
+    ports:
+      - "8000:80"
+    restart: unless-stopped
+    profiles: ["prod"]
+
+  # Dev server with hot module reload
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: workout-builder-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    profiles: ["dev"]

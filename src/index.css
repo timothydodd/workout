@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: dark; }
+  html, body, #root { min-height: 100%; }
+  body {
+    font-family: 'Roboto Flex', Roboto, system-ui, sans-serif;
+    background-color: #131316;
+    color: #e3e3e7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    letter-spacing: -0.005em;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7);
+    cursor: pointer;
+  }
+  ::selection { background: #a8c7fa; color: #062e6f; }
+}
+
+@layer utilities {
+  /* Material-style state layer overlays (subtle hover/press tint) */
+  .state-layer { position: relative; }
+  .state-layer::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: currentColor;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+  .state-layer:hover::after  { opacity: 0.08; }
+  .state-layer:active::after { opacity: 0.12; }
+}
+
+@keyframes todayRing {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(168,199,250,0.4); }
+  50%      { box-shadow: 0 0 0 4px rgba(168,199,250,0.18); }
+}
+.today-ring { animation: todayRing 2.6s ease-in-out infinite; }
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%      { transform: scale(1.4); opacity: 0.6; }
+}
+.dot-pulse { animation: dotPulse 1.8s ease-in-out infinite; }
+
+/* Fade-in on day swap */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.35s ease-out both; }

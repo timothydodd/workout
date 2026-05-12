@@ -1,0 +1,77 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workout-builder
+  labels:
+    app: workout-builder
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workout-builder
+  template:
+    metadata:
+      labels:
+        app: workout-builder
+    spec:
+      containers:
+        - name: web
+          image: workout-builder:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: program
+              mountPath: /usr/share/nginx/html/program.yaml
+              subPath: program.yaml
+              readOnly: true
+          readinessProbe:
+            httpGet: { path: /, port: 80 }
+            initialDelaySeconds: 2
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /, port: 80 }
+            initialDelaySeconds: 5
+            periodSeconds: 20
+      volumes:
+        - name: program
+          configMap:
+            name: workout-builder-program
+            items:
+              - key: program.yaml
+                path: program.yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: workout-builder
+  labels:
+    app: workout-builder
+spec:
+  selector:
+    app: workout-builder
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+---
+# Optional: expose via Traefik (default ingress in k3s)
+# Uncomment and adjust the host.
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: workout-builder
+# spec:
+#   rules:
+#     - host: workout.example.lan
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: workout-builder
+#                 port:
+#                   number: 80

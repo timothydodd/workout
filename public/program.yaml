@@ -1,0 +1,72 @@
+# Workout Builder program definition
+# Mount via a Kubernetes ConfigMap at /usr/share/nginx/html/program.yaml
+# to override the built-in default.
+#
+# Each entry in `days` is either:
+#   - rest                         (a scheduled rest day)
+#   - { workout: NAME, video: ID } (YouTube video ID — the part after youtu.be/)
+
+name: Son Goku
+subtitle: 60-day dumbbell program
+
+days:
+  - { workout: Upper Body,                  video: z1NlYriM0Uk }
+  - { workout: Lower Body,                  video: rXfkO9vfA4Y }
+  - { workout: Chest, Shoulders & Triceps,  video: mZnaTUBb6lo }
+  - { workout: Back & Biceps,               video: WDanSsVA7vQ }
+  - { workout: Legs,                        video: 7dEkOdcE6Vw }
+  - { workout: Chest & Front Delts,         video: 0YryYIAEOms }
+  - rest
+  - { workout: Chest & Front Delts,         video: 0YryYIAEOms }
+  - { workout: Back & Traps,                video: Qf2pUvBbgaQ }
+  - { workout: Legs,                        video: 7dEkOdcE6Vw }
+  - rest
+  - { workout: Biceps & Triceps,            video: j2c58KV4N-A }
+  - { workout: Lower Body,                  video: rXfkO9vfA4Y }
+  - rest
+  - { workout: Upper Body,                  video: z1NlYriM0Uk }
+  - { workout: Legs,                        video: 7dEkOdcE6Vw }
+  - { workout: Biceps & Triceps,            video: j2c58KV4N-A }
+  - rest
+  - { workout: Chest, Shoulders & Triceps,  video: mZnaTUBb6lo }
+  - { workout: Back & Biceps,               video: WDanSsVA7vQ }
+  - rest
+  - { workout: Lower Body,                  video: rXfkO9vfA4Y }
+  - { workout: Biceps & Triceps,            video: j2c58KV4N-A }
+  - rest
+  - { workout: Chest, Shoulders & Triceps,  video: mZnaTUBb6lo }
+  - { workout: Legs,                        video: 7dEkOdcE6Vw }
+  - { workout: Back & Traps,                video: Qf2pUvBbgaQ }
+  - rest
+  - { workout: Chest, Shoulders & Triceps,  video: mZnaTUBb6lo }
+  - { workout: Back & Biceps,               video: WDanSsVA7vQ }
+  - { workout: Chest & Front Delts,         video: 0YryYIAEOms }
+  - { workout: Back & Traps,                video: Qf2pUvBbgaQ }
+  - rest
+  - { workout: Biceps & Triceps,            video: j2c58KV4N-A }
+  - { workout: Legs,                        video: 7dEkOdcE6Vw }
+  - rest
+  - { workout: Upper Body,                  video: z1NlYriM0Uk }
+  - { workout: Lower Body,                  video: rXfkO9vfA4Y }
+  - { workout: Chest & Front Delts,         video: 0YryYIAEOms }
+  - { workout: Back & Biceps,               video: WDanSsVA7vQ }
+  - rest
+  - { workout: Biceps & Triceps,            video: j2c58KV4N-A }
+  - { workout: Legs,                        video: 7dEkOdcE6Vw }
+  - { workout: Chest, Shoulders & Triceps,  video: mZnaTUBb6lo }
+  - { workout: Back & Biceps,               video: WDanSsVA7vQ }
+  - rest
+  - { workout: Back & Biceps,               video: WDanSsVA7vQ }
+  - { workout: Chest, Shoulders & Triceps,  video: mZnaTUBb6lo }
+  - { workout: Lower Body,                  video: rXfkO9vfA4Y }
+  - { workout: Biceps & Triceps,            video: j2c58KV4N-A }
+  - rest
+  - { workout: Chest, Shoulders & Triceps,  video: mZnaTUBb6lo }
+  - { workout: Back & Biceps,               video: WDanSsVA7vQ }
+  - { workout: Legs,                        video: 7dEkOdcE6Vw }
+  - { workout: Biceps & Triceps,            video: j2c58KV4N-A }
+  - rest
+  - { workout: Chest & Front Delts,         video: 0YryYIAEOms }
+  - { workout: Back & Traps,                video: Qf2pUvBbgaQ }
+  - { workout: Chest, Shoulders & Triceps,  video: mZnaTUBb6lo }
+  - { workout: Back & Biceps,               video: WDanSsVA7vQ }
